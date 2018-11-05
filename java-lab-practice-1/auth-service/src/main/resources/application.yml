@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: auth-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: password2
+    url: jdbc:postgresql://localhost:5432/java-lab-practice
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  jta:
+    enabled: true
+
+server:
+  port: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka
+  instance:
+    prefer-ip-address: true
+
+jwt:
+  header: Authorization
+  secret: semyon_secret
+  expiration: 120000 #milliseconds
