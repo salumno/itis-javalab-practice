@@ -29,8 +29,8 @@ public class UserServeController {
 
     @PostMapping("/disable")
     public ResponseEntity disableUser(@Valid @RequestBody final DisableUserRequest request) {
-        tokenStatusService.disableUser(request.getUserId());
-        userServeService.disableUser(request.getUserId());
+        tokenStatusService.disableUser(request.getUserLogin());
+        userServeService.disableUser(request.getUserLogin());
         return ResponseEntity.ok().build();
     }
 }

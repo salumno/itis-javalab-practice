@@ -1,5 +1,5 @@
 package ru.kpfu.itis.authservice.service;
 
 public interface UserServeService {
-    void disableUser(Long userId);
+    void disableUser(String userLogin);
 }

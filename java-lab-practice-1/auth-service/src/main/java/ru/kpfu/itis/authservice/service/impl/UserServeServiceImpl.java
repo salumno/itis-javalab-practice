@@ -17,9 +17,9 @@ public class UserServeServiceImpl implements UserServeService {
     }
 
     @Override
-    public void disableUser(Long userId) {
-        UserPersonalData user = userPersonalDataRepository.findById(userId).orElseThrow(
-                () -> new IllegalArgumentException("User with id " + userId + " does not exist"));
+    public void disableUser(String userLogin) {
+        UserPersonalData user = userPersonalDataRepository.findByLogin(userLogin).orElseThrow(
+                () -> new IllegalArgumentException("User with login " + userLogin + " does not exist"));
         user.setStatus(Status.BANNED);
         userPersonalDataRepository.save(user);
     }

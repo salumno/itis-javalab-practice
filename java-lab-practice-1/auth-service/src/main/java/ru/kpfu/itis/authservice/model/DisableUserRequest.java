@@ -7,5 +7,5 @@ import javax.validation.constraints.NotNull;
 @Data
 public class DisableUserRequest {
     @NotNull
-    private Long userId;
+    private String userLogin;
 }
