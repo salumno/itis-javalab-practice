@@ -17,6 +17,20 @@
 <#--<script type="text/javascript" src="/js/user-updates-websocket.js"></script>-->
 </head>
 <body class="container-fluid">
+    <div>
+        <form method="post" action="/login">
+            <div class="form-group">
+                <input id="login" type="text" name="login" placeholder="login" class="form-control">
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button id="bun-btn" onclick="banUser()" class="btn btn-success form-control" type="button">Ban</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
     <div id="users">
     </div>
 
@@ -33,6 +47,22 @@
                 },
                 error: function () {
                     console.log('getAllUsers method produced the error!');
+                }
+            });
+        }
+
+        function banUser() {
+            var login = $('#login').val();
+            console.log(login);
+            $.ajax({
+                url: 'http://localhost:8080/users/ban/' + login,
+                type: 'GET',
+                dataType: 'json',
+                success: function () {
+                    console.log("SUCCESS!11!!!!!");
+                },
+                error: function () {
+                    console.log('banUser method produced the error!');
                 }
             });
         }
