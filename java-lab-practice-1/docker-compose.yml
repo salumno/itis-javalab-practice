@@ -1,0 +1,57 @@
+version: '2'
+services:
+  eureka-service:
+    image: javalab/eureka-service:latest
+    ports:
+      - "9000:9000"
+  zuul-service:
+    image: javalab/zuul-service:latest
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka-service
+  cat-service:
+    image: javalab/cat-service:latest
+    ports:
+      - "8082:8080"
+    depends_on:
+      - eureka-service 
+  user-service:
+    image: javalab/user-service:latest
+    ports:
+      - "8083:8080"
+    depends_on:
+      - eureka-service
+      - db
+      - redis
+  auth-service:
+    image: javalab/auth-service:latest
+    ports:
+      - "8084:8080"
+    depends_on:
+      - eureka-service
+      - db
+      - redis   
+  frontend-service:
+    image: javalab/frontend-service:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - zuul-service             
+  db:
+    image: postgres:9.4
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password2
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=java-lab-practice
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+  rabbitmq:
+    image: javalab/rabbitmq:3.7-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"

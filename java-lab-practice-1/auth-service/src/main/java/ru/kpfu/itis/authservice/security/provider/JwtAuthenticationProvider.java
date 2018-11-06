@@ -40,6 +40,8 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
                 body.get("sub").toString()
         );
 
+        // TODO: We need status check here. Redis vs common DB?
+
         jwtAuthentication.setUserDetails(userDetails);
         jwtAuthentication.setAuthenticated(true);
         return jwtAuthentication;

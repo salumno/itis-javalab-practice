@@ -20,7 +20,7 @@ import static java.util.Collections.singletonList;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-    private final String AUTH_API_URL = "http://localhost:8081/api/auth-service/auth/login";
+    private final String AUTH_API_URL = "http://zuul-service:8081/api/auth-service/auth/login";
 
     private final RestTemplate restTemplate;
 

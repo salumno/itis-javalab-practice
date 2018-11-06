@@ -5,7 +5,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: password2
-    url: jdbc:postgresql://localhost:5432/java-lab-practice
+    url: jdbc:postgresql://db:5432/java-lab-practice
 
   jpa:
     hibernate:
@@ -21,16 +21,16 @@ spring:
   rabbitmq:
     username: guest
     password: guest
-    host: 127.0.0.1
+    host: rabbitmq
     port: 5672
 
 server:
-  port: 0
+  port: 8080
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:9000/eureka
+      defaultZone: http://eureka-service:9000/eureka
   instance:
     prefer-ip-address: true
 

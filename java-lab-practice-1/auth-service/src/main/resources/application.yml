@@ -5,7 +5,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: password2
-    url: jdbc:postgresql://localhost:5432/java-lab-practice
+    url: jdbc:postgresql://db:5432/java-lab-practice
   jpa:
     hibernate:
       ddl-auto: update
@@ -16,14 +16,17 @@ spring:
             non_contextual_creation: true
   jta:
     enabled: true
+  redis:
+    host: redis
+    port: 6379
 
 server:
-  port: 0
+  port: 8080
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:9000/eureka
+      defaultZone: http://eureka-service:9000/eureka
   instance:
     prefer-ip-address: true
 

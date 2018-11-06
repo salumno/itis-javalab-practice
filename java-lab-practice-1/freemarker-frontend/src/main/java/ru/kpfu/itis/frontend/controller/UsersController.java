@@ -19,8 +19,8 @@ import static java.util.Collections.singletonList;
 @RestController
 @RequestMapping("/users")
 public class UsersController {
-    private final String USERS_API_URL = "http://localhost:8081/api/user-service/users";
-    private final String AUTH_API_URL = "http://localhost:8081/api/auth-service/users";
+    private final String USERS_API_URL = "http://zuul-service:8081/api/user-service/users";
+    private final String AUTH_API_URL = "http://zuul-service:8081/api/auth-service/users";
 
     private final RestTemplate restTemplate;
     private final TokenUtils tokenUtils;
